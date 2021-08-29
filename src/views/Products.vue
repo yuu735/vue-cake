@@ -1,6 +1,6 @@
 <template>
 <Loading :active="isLoading"></Loading>
-<div class="text-end px-3 py-3">
+<div class="text-end mt-4">
     <button class="btn btn-primary " type="button" @click="openModal(true)">新增商品</button>
 </div>
 <table class="table mt-4 ">
@@ -19,10 +19,10 @@
       <td>{{item.category}}</td>
       <td>{{item.title}}</td>
       <td class="text-right">
-        {{item.origin_price}}
+        {{$filters.currency(item.origin_price)}}
       </td>
       <td class="text-right">
-        {{item.price}}
+        {{$filters.currency(item.price)}}
       </td>
       <td>
         <span class="text-success" v-if="item.is_enabled">啟用</span>
@@ -37,6 +37,8 @@
     </tr>
   </tbody>
 </table>
+<Pagination :pages="pagination" @emit-pages="getProducts"></Pagination>
+
 <!-- 每次触发时该页面的tempProduct会往ProductModal档案中的props里面的product传送资料,watch也会触发然后将资料写进data里的temProduct(修改资料时会使用的名称) -->
 <!-- emit前内后外这里用@内层=外层,触发updateProduct函式，并将emit传送的参数tempProduct传入函式 -->
 <ProductModal ref="productModal" :product="tempProduct"
@@ -47,6 +49,9 @@
 <script>
 import ProductModal from '@/components/ProductModal.vue'
 import DelModal from '@/components/DelModal.vue'
+import Pagination from '@/components/Pagination.vue'
+// 只有匯出使用不需要加入元件
+// import { currency } from '../methods/filters'
 export default {
   data () {
     return {
@@ -59,17 +64,18 @@ export default {
   },
   components: {
     ProductModal,
-    DelModal
+    DelModal,
+    Pagination
   },
   inject: ['emitter'],
   methods: {
-    getProducts () {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products`
+    getProducts (page = 1) {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/?page=${page}`
       this.isLoading = true
       this.$http.get(api).then((res) => {
         this.isLoading = false
         if (res.data.success) {
-          console.log('object', res.data)
+          console.log('getProductobject', res.data)
           this.products = res.data.products
           this.pagination = res.data.pagination
         }
