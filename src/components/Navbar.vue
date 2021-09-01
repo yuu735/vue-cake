@@ -1,7 +1,7 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">星兜園</a>
+    <a class="navbar-brand" href="#">後台管理系統</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,6 +10,7 @@
         <router-link to="/dashboard/products" class="nav-link">產品</router-link>
         <router-link to="/dashboard/orders" class="nav-link">訂單</router-link>
         <router-link to="/dashboard/coupons" class="nav-link">優惠券</router-link>
+        <router-link to="/user/cart" class="nav-link">回到前台</router-link>
         <a href="#" @click.prevent="logout" class="nav-link">登出</a>
       </div>
     </div>
