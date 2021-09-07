@@ -43,6 +43,10 @@ const routes = [
     component: () => import('../views/Userboard.vue'),
     children: [
       {
+        path: 'home',
+        component: () => import('../views/UserHome.vue')
+      },
+      {
         path: 'cart',
         component: () => import('../views/UserCart.vue')
       },
@@ -57,6 +61,10 @@ const routes = [
       {
         path: 'checkout/:orderId',
         component: () => import('../views/UserCheckout.vue')
+      },
+      {
+        path: 'query',
+        component: () => import('../views/UserQuery.vue')
       }
     ]
   }

@@ -13,11 +13,14 @@ import { localize, setLocale } from '@vee-validate/i18n'
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
 import App from './App.vue'
 import router from './router'
+import 'bootstrap'
 import 'bootstrap-icons/font/bootstrap-icons.css'
-
+import VueClipboard from 'vue-clipboard3'
 const app = createApp(App)
 app.use(VueAxios, axios)
 app.use(router)
+VueClipboard.config.autoSetContainer = true
+app.use(VueClipboard)
 app.component('Loading', Loading)
 app.config.globalProperties.$filters = {
   currency,

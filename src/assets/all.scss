@@ -2,3 +2,100 @@
 @import "./helpers/variables";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/bootstrap";
+@import "//at.alicdn.com/t/font_2786512_fto4k3r8v05.css";
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+@import url(https://fonts.googleapis.com/css?family=Baloo+Tamma+2:600,700);
+.callout {
+    padding: 1.25rem;
+    margin-top: 0.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #e9ecef;
+    border-left-width: .25rem;
+    border-radius: .25rem;
+}
+.callout-primary{
+    border-left-color: #2D4C46;
+
+}
+@font-face {
+    font-family: 'iconfont';  /* Project id 2786512 */
+    src: url('//at.alicdn.com/t/font_2786512_0cizrde3rydj.woff2?t=1630593842201') format('woff2'),
+         url('//at.alicdn.com/t/font_2786512_0cizrde3rydj.woff?t=1630593842201') format('woff'),
+         url('//at.alicdn.com/t/font_2786512_0cizrde3rydj.ttf?t=1630593842201') format('truetype');
+  }
+.iconfont {
+    font-family:"iconfont" !important;
+    font-size:20px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+.list-group-item:hover {
+  background: rgb(243, 243, 243);
+  cursor: pointer;
+  color: steelblue;
+}
+.cover .productImage:hover .pd-content{
+    opacity: 1;
+}
+.step, .step .step-point-line {
+    position: relative;
+}
+.step .step-point::before {
+    content: "";
+      display: block;
+      position: absolute;
+      z-index: 0;
+      right: 50px;
+      top: 16px;
+      width: 10px;
+      height: 10px;
+      background-color: #2D4C46;
+      border-radius: 500px;
+      animation-name: point;
+      animation-duration: 2s;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+}
+.step .stepbtn {
+    z-index: 1;
+    position: relative;
+}
+.step .step-point-line::after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    right: -80px;
+    top: 20px;
+    width: 180px;
+    height: 2px;
+    border-bottom: 2px solid #2D4C46;
+}
+@keyframes point {
+    0% {
+      transform: translateX(0rem);
+      opacity: 0;
+    }
+    1% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(10rem);
+      opacity: 1;
+    }
+  }
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Tamma', sans-serif;
+  }

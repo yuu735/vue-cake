@@ -2,9 +2,9 @@
 <Loading :active="isLoading"></Loading>
 <div class="container mt-5">
     <form class="row justify-content-center" @submit.prevent="signIn">
-    <div class="col-md-6">
-        <h1 class="h3 mb-3 font-weight-normal">請先登入</h1>
-        <div class="mb-2">
+    <div class="col-md-6 shadow-lg border border-primary border-3 p-3">
+        <div class="h3 py-3 font-weight-normal text-center ">XERO後台管理系統</div>
+        <div class="mb-3">
         <label for="inputEmail" class="sr-only">Email address</label>
         <input
             type="email"
@@ -16,7 +16,7 @@
             v-model="user.username"
         />
         </div>
-        <div class="mb-2">
+        <div class="mb-3">
         <label for="inputPassword" class="sr-only">Password</label>
         <input
             type="password"

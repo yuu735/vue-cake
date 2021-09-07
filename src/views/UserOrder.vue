@@ -1,10 +1,29 @@
 <template>
   <Loading :active="isLoading"></Loading>
   <div class="container">
-    <div class="row mt-4">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7 col-12">
+        <div class="row step">
+          <div class="col text-center step-point-line step-point">
+            <span class="bg-primary px-4 py-2 rounded-pill text-white mb-3 d-inline-block">STEP 1</span>
+            <p class="text-primary h6">確認訂單資料</p>
+          </div>
+          <div class="col text-center step-point-line">
+            <span class="border border-primary bg-white px-4 py-2 rounded-pill text-primary mb-3 d-inline-block">STEP 2</span>
+            <p class="text-primary h6">確認付款</p>
+          </div>
+          <div class="col text-center">
+            <span class="border border-primary bg-white px-4 py-2 rounded-pill text-primary mb-3 d-inline-block">STEP 3</span>
+            <p class="text-primary h6">完成訂單</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4 mb-3">
       <!-- 購物車列表 -->
-      <div class="col-md-4 px-2">
-        <div class="cart sticky-top">
+      <div class="col-md-4">
+        <div class="sticky-top px-2">
+        <div class="cart shadow-sm p-2 ">
           <h4>購物車清單</h4>
           <table class="table align-middle">
             <!-- 表格標題 -->
@@ -70,10 +89,15 @@
               </button>
             </div>
           </div>
+          <span class="text-secondary mb-1">歡慶開幕!即日起輸入"happy11"可獲得九折優惠~</span>
+        </div>
+        <button class="btn btn-primary mt-3" type="button" @click="backProduct()">
+                繼續購物
+        </button>
         </div>
       </div>
     <!-- 訂單資料填寫 -->
-      <Form class="col-md-7 px-5" v-slot="{ errors }"
+      <Form class="col-md-7  px-5" v-slot="{ errors }"
         @submit="createOrder">
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
@@ -117,7 +141,7 @@
                 v-model="form.message"></textarea>
     </div>
     <div class="text-end">
-        <button class="btn btn-danger">送出訂單</button>
+        <button class="btn btn-primary">送出訂單</button>
     </div>
       </Form>
     </div>
@@ -145,6 +169,9 @@ export default {
     }
   },
   methods: {
+    backProduct () {
+      this.$router.push('/user/cart')
+    },
     getCart () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
       this.isLoading = true

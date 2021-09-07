@@ -78,12 +78,13 @@ export default {
   methods: {
     getOrders (currentPage = 1) {
       this.currentPage = currentPage
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=:${currentPage}`
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${currentPage}`
       this.isLoading = true
       this.$http.get(url, this.tempOrder).then((response) => {
         this.isLoading = false
-        console.log('getOrderapi', url)
-        console.log(response.data.orders)
+        console.log(url)
+        console.log(response.data)
+        // console.log(response.data.orders)
         this.orders = response.data.orders
         this.pagination = response.data.pagination
       })
